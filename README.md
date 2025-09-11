@@ -11,7 +11,7 @@ A simple React application with Login and Signup pages using `react-router-dom` 
 ## Prerequisites
 
 - Node.js (v16+ recommended)
-- npm or yarn
+- npm
 
 ## Installation
 
