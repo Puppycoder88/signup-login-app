@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import { validUsername, validPassword } from "../utils/validation";
 import Button from "../components/Button";
 
 const Login =() => {
+    const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -108,9 +110,10 @@ const Login =() => {
             {/* Signup Redirect */}
             <p className="text-center text-sm">
               Don’t have Account?
-              <a href="/signup" className="text-teal-700 font-medium hover:underline">
+              <span onClick={() => navigate("/signup")}
+               className="text-teal-700 font-medium hover:underline cursor-pointer">
                 SignUp
-              </a>
+              </span>
             </p>
           </form>
         </div>
