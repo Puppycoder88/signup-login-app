@@ -10,7 +10,7 @@ import {
 } from "../utils/validation";
 import Button from "../components/Button";
 
-const Signup =() => {
+const Signup = () => {
   const [formData, setFormData] = useState({
     name: "",
     username: "",
@@ -79,18 +79,20 @@ const Signup =() => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-teal-100">
-      <div className="w-full max-w-2xl bg-white rounded shadow-lg">
+    <div className="min-h-screen flex items-center justify-center bg-teal-100 px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-md sm:max-w-2xl bg-white rounded-xl shadow-lg my-5">
         {/* Header */}
-        <div className="bg-teal-700 text-white text-center py-4 rounded-t">
-          <h2 className="text-lg font-medium">Create new Account</h2>
+        <div className="bg-teal-700 text-white text-center py-4 rounded-t-xl">
+          <h2 className="text-lg sm:text-xl font-medium">
+            Create New Account
+          </h2>
         </div>
 
         {/* Form */}
-        <div className="p-8">
+        <div className="p-6 sm:p-8">
           <form className="space-y-6" onSubmit={handleSubmit}>
             {/* Row 1 */}
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <input
                   type="text"
@@ -98,9 +100,11 @@ const Signup =() => {
                   placeholder="NAME"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full border-b border-gray-300 focus:outline-none focus:border-teal-600 py-2 px-1"
+                  className="w-full border-b border-gray-300 focus:outline-none focus:border-teal-600 py-2 px-1 text-sm sm:text-base"
                 />
-                {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+                {errors.name && (
+                  <p className="text-red-500 text-xs sm:text-sm">{errors.name}</p>
+                )}
               </div>
 
               <div>
@@ -110,14 +114,18 @@ const Signup =() => {
                   placeholder="USERNAME"
                   value={formData.username}
                   onChange={handleChange}
-                  className="w-full border-b border-gray-300 focus:outline-none focus:border-teal-600 py-2 px-1"
+                  className="w-full border-b border-gray-300 focus:outline-none focus:border-teal-600 py-2 px-1 text-sm sm:text-base"
                 />
-                {errors.username && <p className="text-red-500 text-sm">{errors.username}</p>}
+                {errors.username && (
+                  <p className="text-red-500 text-xs sm:text-sm">
+                    {errors.username}
+                  </p>
+                )}
               </div>
             </div>
 
             {/* Row 2 */}
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <input
                   type="email"
@@ -125,9 +133,13 @@ const Signup =() => {
                   placeholder="EMAIL"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full border-b border-gray-300 focus:outline-none focus:border-teal-600 py-2 px-1"
+                  className="w-full border-b border-gray-300 focus:outline-none focus:border-teal-600 py-2 px-1 text-sm sm:text-base"
                 />
-                {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+                {errors.email && (
+                  <p className="text-red-500 text-xs sm:text-sm">
+                    {errors.email}
+                  </p>
+                )}
               </div>
 
               <div>
@@ -137,22 +149,28 @@ const Signup =() => {
                   placeholder="PHONE NO."
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full border-b border-gray-300 focus:outline-none focus:border-teal-600 py-2 px-1"
+                  className="w-full border-b border-gray-300 focus:outline-none focus:border-teal-600 py-2 px-1 text-sm sm:text-base"
                 />
-                {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
+                {errors.phone && (
+                  <p className="text-red-500 text-xs sm:text-sm">
+                    {errors.phone}
+                  </p>
+                )}
               </div>
             </div>
 
-            {/* Row 3 (Passwords with labels) */}
-            <div className="grid grid-cols-2 gap-6">
+            {/* Row 3 (Passwords) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="relative">
-                <label className="block text-xs text-gray-500 mb-1">NEW PASSWORD</label>
+                <label className="block text-xs sm:text-sm text-gray-500 mb-1">
+                  NEW PASSWORD
+                </label>
                 <input
                   type={showPassword ? "text" : "password"}
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
-                  className="w-full border-b border-gray-300 focus:outline-none focus:border-teal-600 py-2 px-1"
+                  className="w-full border-b border-gray-300 focus:outline-none focus:border-teal-600 py-2 px-1 text-sm sm:text-base"
                 />
                 <button
                   type="button"
@@ -161,17 +179,23 @@ const Signup =() => {
                 >
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
-                {errors.password && <p className="text-red-500 text-sm">{errors.password}</p>}
+                {errors.password && (
+                  <p className="text-red-500 text-xs sm:text-sm">
+                    {errors.password}
+                  </p>
+                )}
               </div>
 
               <div className="relative">
-                <label className="block text-xs text-gray-500 mb-1">CONFIRM NEW PASSWORD</label>
+                <label className="block text-xs sm:text-sm text-gray-500 mb-1">
+                  CONFIRM PASSWORD
+                </label>
                 <input
                   type={showConfirmPassword ? "text" : "password"}
                   name="confirmPassword"
                   value={formData.confirmPassword}
                   onChange={handleChange}
-                  className="w-full border-b border-gray-300 focus:outline-none focus:border-teal-600 py-2 px-1"
+                  className="w-full border-b border-gray-300 focus:outline-none focus:border-teal-600 py-2 px-1 text-sm sm:text-base"
                 />
                 <button
                   type="button"
@@ -181,16 +205,16 @@ const Signup =() => {
                   {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
                 {errors.confirmPassword && (
-                  <p className="text-red-500 text-sm">{errors.confirmPassword}</p>
+                  <p className="text-red-500 text-xs sm:text-sm">
+                    {errors.confirmPassword}
+                  </p>
                 )}
               </div>
             </div>
 
             {/* Button */}
             <div className="flex justify-end">
-              <Button
-                type="submit"
-              >
+              <Button type="submit" className="w-full sm:w-auto">
                 SIGN UP
               </Button>
             </div>
@@ -199,7 +223,6 @@ const Signup =() => {
       </div>
     </div>
   );
-}
-
+};
 
 export default Signup;

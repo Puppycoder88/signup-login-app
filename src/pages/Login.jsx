@@ -4,8 +4,8 @@ import { Eye, EyeOff } from "lucide-react";
 import { validUsername, validPassword } from "../utils/validation";
 import Button from "../components/Button";
 
-const Login =() => {
-    const navigate = useNavigate();
+const Login = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -21,14 +21,12 @@ const Login =() => {
   const validate = () => {
     let tempErrors = {};
 
-    // Username validation
     if (!formData.username) {
       tempErrors.username = "Username is required.";
     } else if (!validUsername(formData.username)) {
       tempErrors.username = "Invalid username format.";
     }
 
-    // Password validation
     if (!formData.password) {
       tempErrors.password = "Password is required.";
     } else if (!validPassword(formData.password, formData.username)) {
@@ -50,41 +48,47 @@ const Login =() => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-teal-100">
-      <div className="w-full max-w-lg bg-white rounded shadow-lg">
+    <div className="min-h-screen flex items-center justify-center bg-teal-100 px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-md sm:max-w-lg md:max-w-xl bg-white rounded-xl shadow-lg">
         {/* Header */}
-        <div className="bg-teal-700 text-white text-center py-6 rounded-t">
-          <h2 className="text-2xl font-mono">Login</h2>
-          <p className="text-sm mt-1">Sign in to continue</p>
+        <div className="bg-teal-700 text-white text-center py-6 rounded-t-xl">
+          <h2 className="text-xl sm:text-2xl font-mono">Login</h2>
+          <p className="text-xs sm:text-sm mt-1">Sign in to continue</p>
         </div>
 
         {/* Form */}
-        <div className="p-8">
+        <div className="p-6 sm:p-8">
           <form className="space-y-6" onSubmit={handleSubmit}>
             {/* Username */}
             <div>
-              <label className="block text-xs text-gray-500 mb-1">USERNAME</label>
+              <label className="block text-xs sm:text-sm text-gray-500 mb-1">
+                USERNAME
+              </label>
               <input
                 type="text"
                 name="username"
                 value={formData.username}
                 onChange={handleChange}
-                className="w-full border-b border-gray-300 focus:outline-none focus:border-teal-600 py-2 px-1"
+                className="w-full border-b border-gray-300 focus:outline-none focus:border-teal-600 py-2 px-1 text-sm sm:text-base"
               />
               {errors.username && (
-                <p className="text-red-500 text-sm mt-1">{errors.username}</p>
+                <p className="text-red-500 text-xs sm:text-sm mt-1">
+                  {errors.username}
+                </p>
               )}
             </div>
 
             {/* Password */}
             <div className="relative">
-              <label className="block text-xs text-gray-500 mb-1">NEW PASSWORD</label>
+              <label className="block text-xs sm:text-sm text-gray-500 mb-1">
+                PASSWORD
+              </label>
               <input
                 type={showPassword ? "text" : "password"}
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                className="w-full border-b border-gray-300 focus:outline-none focus:border-teal-600 py-2 px-1"
+                className="w-full border-b border-gray-300 focus:outline-none focus:border-teal-600 py-2 px-1 text-sm sm:text-base"
               />
               <button
                 type="button"
@@ -94,24 +98,26 @@ const Login =() => {
                 {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
               </button>
               {errors.password && (
-                <p className="text-red-500 text-sm mt-1">{errors.password}</p>
+                <p className="text-red-500 text-xs sm:text-sm mt-1">
+                  {errors.password}
+                </p>
               )}
             </div>
 
             {/* Login Button */}
             <div className="flex justify-center">
-              <Button
-                type="submit"
-              >
+              <Button type="submit" className="w-full sm:w-auto">
                 LOGIN
               </Button>
             </div>
 
             {/* Signup Redirect */}
-            <p className="text-center text-sm">
-              Don’t have Account?
-              <span onClick={() => navigate("/signup")}
-               className="text-teal-700 font-medium hover:underline cursor-pointer">
+            <p className="text-center text-xs sm:text-sm">
+              Don’t have an account?{" "}
+              <span
+                onClick={() => navigate("/signup")}
+                className="text-teal-700 font-medium hover:underline cursor-pointer"
+              >
                 SignUp
               </span>
             </p>
@@ -120,6 +126,6 @@ const Login =() => {
       </div>
     </div>
   );
-}
+};
 
 export default Login;
